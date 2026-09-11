@@ -194,6 +194,25 @@
             color: #e08a8a;
         }
 
+        .lm-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            text-align: left;
+            font-size: 12.5px;
+            line-height: 1.55;
+            color: rgba(220, 240, 228, 0.4);
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .lm-note svg {
+            flex-shrink: 0;
+            margin-top: 1px;
+            opacity: 0.6;
+        }
+
         /* ── Divider with label ── */
         .section-divider {
             display: flex;
@@ -331,6 +350,11 @@
                 <button class="lm-submit" type="submit">Unlock Now</button>
                 <div class="lm-message" id="lm-message"></div>
             </form>
+
+            <div class="lm-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+                <span>You may get an email asking you to confirm your subscription — that's just to join the Whale Outreach email list. No worries if it's not for you, your guide unlocks either way.</span>
+            </div>
         </div>
 
     </section>
