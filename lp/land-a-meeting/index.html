@@ -196,11 +196,13 @@
 
         .lm-note {
             display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            text-align: left;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 10px;
             font-size: 12.5px;
-            line-height: 1.55;
+            line-height: 1.6;
             color: rgba(220, 240, 228, 0.4);
             margin-top: 20px;
             padding-top: 18px;
@@ -209,7 +211,8 @@
 
         .lm-note svg {
             flex-shrink: 0;
-            margin-top: 1px;
+            width: 22px;
+            height: 22px;
             opacity: 0.6;
         }
 
@@ -352,8 +355,12 @@
             </form>
 
             <div class="lm-note">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
-                <span>You may get an email asking you to confirm your subscription — that's just to join the Whale Outreach email list. No worries if it's not for you, your guide unlocks either way.</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+                <p>
+                    You will get an email asking you to confirm your subscription.<br>
+                    That's to join the Whale Outreach email list.<br>
+                    No worries if it's not for you, your guide unlocks either way.
+                </p>
             </div>
         </div>
 
