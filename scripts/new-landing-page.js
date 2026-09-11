@@ -41,7 +41,7 @@ if (ck.formActionUrl.includes('REPLACE_FORM_ID')) {
 }
 
 const buttonText = page.buttonText || 'Unlock Now';
-const successMessage = page.successMessage || 'Success! Check your email to get your free guide.';
+const successMessage = page.successMessage || "You're in! Taking you to your guide now...";
 
 let socialProofHtml = '';
 if (Array.isArray(page.socialProof) && page.socialProof.length > 0) {

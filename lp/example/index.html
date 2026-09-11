@@ -352,7 +352,7 @@
 
             var form = document.getElementById('lm-form');
             var msg = document.getElementById('lm-message');
-            var successText = "Success!\nNow check your email to get your free guide.";
+            var successText = "You're in! Taking you to your guide now...";
 
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
@@ -379,7 +379,9 @@
                         msg.textContent = successText;
                         msg.className = 'lm-message success';
                         form.reset();
-                        submitBtn.disabled = false;
+                        setTimeout(function () {
+                            window.location.href = CK.leadMagnetUrl;
+                        }, 1200);
                     })
                     .catch(function () {
                         msg.textContent = 'Something went wrong — please try again.';

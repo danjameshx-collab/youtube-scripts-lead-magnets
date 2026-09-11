@@ -379,7 +379,9 @@
                         msg.textContent = successText;
                         msg.className = 'lm-message success';
                         form.reset();
-                        submitBtn.disabled = false;
+                        setTimeout(function () {
+                            window.location.href = CK.leadMagnetUrl;
+                        }, 1200);
                     })
                     .catch(function () {
                         msg.textContent = 'Something went wrong — please try again.';
