@@ -1,0 +1,7 @@
+{
+  "_comment": "PLACEHOLDER values. Replace once the one-time ConvertKit setup (see ../CONVERTKIT_SETUP.md) is done, then paste in your real form's action URL, form id, and uid from its embed code.",
+  "formActionUrl": "https://app.kit.com/forms/REPLACE_FORM_ID/subscriptions",
+  "formId": "REPLACE_FORM_ID",
+  "formUid": "REPLACE_UID",
+  "scriptSrc": "https://f.convertkit.com/ckjs/ck.5.js"
+}

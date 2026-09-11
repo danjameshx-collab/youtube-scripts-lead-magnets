@@ -1,0 +1,13 @@
+{
+  "slug": "example",
+  "pageTitle": "Lincko :: Example Lead Magnet",
+  "badgeText": "For B2B Businesses",
+  "headlineHtml": "How To Create <br><span class=\"green\">Awesome Strategy Docs</span> <br>To Close Whale Clients",
+  "subheadline": "How to send your dream prospects the most incredible pitches quickly, efficiently & with AI.",
+  "buttonText": "Unlock Now",
+  "successMessage": "Success!\nNow check your email to get your free guide.",
+  "leadMagnetName": "Awesome Strategy Docs",
+  "leadMagnetUrl": "https://gamma.app/docs/REPLACE_ME",
+  "socialProof": [],
+  "socialProofLabel": "What people are saying"
+}
