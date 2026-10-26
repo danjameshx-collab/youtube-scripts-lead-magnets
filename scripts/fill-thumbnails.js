@@ -51,13 +51,15 @@ function escapeRegex(s) {
     return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function setId(file, page, id) {
+// Saves the video ID, and the real upload date so the library order matches the channel.
+function setId(file, page, video) {
     const out = {};
     for (const k of Object.keys(page)) {
         out[k] = page[k];
-        if (k === 'slug') out.youtubeId = id;
+        if (k === 'slug') out.youtubeId = video.id;
     }
-    if (!('youtubeId' in out)) out.youtubeId = id;
+    if (!('youtubeId' in out)) out.youtubeId = video.id;
+    if (video.published) out.published = video.published.slice(0, 10);
     fs.writeFileSync(path.join(CONTENT, file), JSON.stringify(out, null, 2) + '\n');
 }
 
@@ -72,6 +74,7 @@ async function main() {
         return {
             id: pick(/<yt:videoId>([^<]+)</),
             title: pick(/<title>([^<]*)</),
+            published: pick(/<published>([^<]+)</),
             description: pick(/<media:description>([\s\S]*?)<\/media:description>/)
         };
     });
@@ -90,7 +93,7 @@ async function main() {
         const linked = videos.find((v) => !usedIds.has(v.id) && linkRe.test(v.description));
         if (linked) {
             console.log('Match by description link: ' + page.slug + ' -> ' + linked.id + ' "' + linked.title + '"');
-            setId(f, page, linked.id);
+            setId(f, page, linked);
             usedIds.add(linked.id);
             changed++;
             continue;
@@ -106,7 +109,7 @@ async function main() {
         }
         if (best && best.s >= MIN_TITLE_SCORE) {
             console.log('Match by title: ' + page.slug + ' -> ' + best.v.id + ' "' + best.v.title + '" (score ' + best.s.toFixed(2) + ')');
-            setId(f, page, best.v.id);
+            setId(f, page, best.v);
             usedIds.add(best.v.id);
             changed++;
         } else {
