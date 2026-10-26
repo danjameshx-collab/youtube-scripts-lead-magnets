@@ -53,7 +53,7 @@ function cardTitle(page) {
 }
 
 const SORT_BAR = [
-    '    <div class="sort-bar" role="group" aria-label="Sort scripts">',
+    '    <div class="sort-bar" role="group" aria-label="Sort resources">',
     '        <span class="sort-label">Sort by</span>',
     '        <button type="button" class="sort-btn is-active" data-sort="date">Newest</button>',
     '        <button type="button" class="sort-btn" data-sort="views">Most popular</button>',
@@ -71,7 +71,7 @@ function cardHtml(page, num) {
         '                <div class="card-top"><span class="card-num">' + String(num).padStart(2, '0') + '</span></div>',
         '                <h3 class="card-title">' + esc(cardTitle(page)) + '</h3>',
         '                <p class="card-desc">' + esc(page.subheadline) + '</p>',
-        '                <span class="card-cta"><span class="card-cta-label">Get Script</span> ' + ARROW + '</span>',
+        '                <span class="card-cta"><span class="card-cta-label">Get Resource</span> ' + ARROW + '</span>',
         '            </div>',
         '        </a>'
     ].join('\n');
@@ -125,7 +125,7 @@ for (const page of pages) {
     const videoThumbHtml = page.youtubeId
         ? '        <div class="video-thumb">\n' +
           '            <div class="video-thumb-frame">' + thumbImg(page).replace(' loading="lazy"', '') + '</div>\n' +
-          '            <div class="video-thumb-tag">' + PLAY + ' The script from this video</div>\n' +
+          '            <div class="video-thumb-tag">' + PLAY + ' The resource from this video</div>\n' +
           '        </div>\n'
         : '';
 
@@ -134,22 +134,22 @@ for (const page of pages) {
         '    <div class="section-label"><span>Want more?</span></div>',
         '',
         '    <div class="library-head">',
-        '        <h2>Get <span class="green">Every Script</span> I\'ve Made</h2>',
-        '        <p>This is one of ' + listed.length + ' scripts from my YouTube videos. Grab them all with one signup, or pick the ones you want below.</p>',
+        '        <h2>Get <span class="green">Every Resource</span> I\'ve Made</h2>',
+        '        <p>This is one of ' + listed.length + ' resources from my YouTube videos. Grab them all with one signup, or pick the ones you want below.</p>',
         '    </div>',
         '',
         '    <div class="all-box-wrap">',
         '        <div class="all-box">',
         '            <div>',
-        '                <div class="all-kicker">All ' + listed.length + ' scripts, one signup</div>',
-        '                <div class="all-title" data-unlocked-text="All ' + listed.length + ' Scripts Unlocked">Grab Every Script At Once</div>',
-        '                <div class="all-text">Instant access to every video script in one place. No need to claim them one by one.</div>',
+        '                <div class="all-kicker">All ' + listed.length + ' resources, one signup</div>',
+        '                <div class="all-title" data-unlocked-text="All ' + listed.length + ' Resources Unlocked">Grab Every Resource At Once</div>',
+        '                <div class="all-text">Instant access to every resource in one place. No need to claim them one by one.</div>',
         '            </div>',
-        '            <a class="all-btn" href="/scripts"><span data-unlocked-text="Open All Scripts">Get All Scripts</span> ' + ARROW + '</a>',
+        '            <a class="all-btn" href="/resources"><span data-unlocked-text="Open All Resources">Get All Resources</span> ' + ARROW + '</a>',
         '        </div>',
         '    </div>',
         '',
-        '    <div class="section-label"><span>Or pick a script</span></div>',
+        '    <div class="section-label"><span>Or pick a resource</span></div>',
         '',
         SORT_BAR,
         '',
@@ -191,4 +191,4 @@ const libHtml = fill(libTemplate, {
 });
 fs.mkdirSync(path.join(ROOT, 'all'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'all', 'index.html'), libHtml, 'utf8');
-console.log('Built: /scripts (' + listed.length + ' scripts)');
+console.log('Built: /resources (' + listed.length + ' scripts)');

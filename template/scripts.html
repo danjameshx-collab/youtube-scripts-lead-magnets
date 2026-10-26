@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Every YouTube Script | Lincko</title>
-    <meta name="description" content="Every script behind Dan James's YouTube videos on signing whale clients through creative outbound. One signup, instant access to all of them.">
+    <title>Every Client-Getting Resource | Lincko</title>
+    <meta name="description" content="Every resource from Dan James's YouTube videos on signing whale clients through creative outbound. One signup, instant access to all of them.">
     <link rel="icon" type="image/png" href="/shared/favicon.png">
     <link rel="stylesheet" href="/shared/scripts-grid.css">
     <style>
@@ -282,22 +282,22 @@
 
         <div class="badge">
             <span class="badge-dot"></span>
-            Free YouTube Scripts
+            Free Client-Getting Resources
         </div>
 
         <h1 class="headline">
-            Every YouTube Script
-            <span class="green">In One Place</span>
+            Every Resource To
+            <span class="green">Land Whale Clients</span>
         </h1>
 
         <p class="subheadline">
-            The full written breakdown behind <strong>every video</strong> on my channel. The same systems I've used to sign <strong>7 and 8-figure founders</strong> through creative outbound. One signup and they're all yours.
+            The step-by-step resources behind <strong>every video</strong> on my channel. The same systems I've used to sign <strong>7 and 8-figure founders</strong> through creative outbound. One signup and they're all yours.
         </p>
 
         <div class="stats">
             <div class="stat">
                 <div class="stat-value">{{SCRIPT_COUNT}}</div>
-                <div class="stat-label">Scripts</div>
+                <div class="stat-label">Resources</div>
             </div>
             <div class="stat">
                 <div class="stat-value">1</div>
@@ -310,7 +310,7 @@
         </div>
 
         <div class="form-wrapper" id="get-all">
-            <div class="form-heading">Enter your details to unlock all {{SCRIPT_COUNT}} scripts</div>
+            <div class="form-heading">Enter your details to unlock all {{SCRIPT_COUNT}} resources</div>
 
             <form id="lm-form" novalidate>
                 <div class="lm-field">
@@ -319,14 +319,14 @@
                 <div class="lm-field">
                     <input class="lm-input" type="email" name="email_address" placeholder="Email Address" required>
                 </div>
-                <button class="lm-submit" type="submit">Unlock All Scripts</button>
+                <button class="lm-submit" type="submit">Unlock All Resources</button>
                 <div class="lm-message" id="lm-message"></div>
             </form>
 
             <div class="lm-unlocked">
-                <div class="lm-unlocked-title">All {{SCRIPT_COUNT}} scripts unlocked</div>
-                <p>Click any script below to open it. Bookmark this tab if you want to come back to them.</p>
-                <a class="lm-open" href="#all-scripts">See The Scripts</a>
+                <div class="lm-unlocked-title">All {{SCRIPT_COUNT}} resources unlocked</div>
+                <p>Click any resource below to open it. Bookmark this tab if you want to come back to them.</p>
+                <a class="lm-open" href="#all-scripts">See The Resources</a>
             </div>
 
             <div class="lm-note">
@@ -334,13 +334,13 @@
                 <p>
                     You will get an email asking you to confirm your subscription.<br>
                     That's to join the Whale Outreach email list.<br>
-                    No worries if it's not for you, your scripts unlock either way.
+                    No worries if it's not for you, your resources unlock either way.
                 </p>
             </div>
         </div>
     </section>
 
-    <div class="section-label" id="all-scripts"><span>All {{SCRIPT_COUNT}} scripts</span></div>
+    <div class="section-label" id="all-scripts"><span>All {{SCRIPT_COUNT}} resources</span></div>
 
 {{SORT_BAR}}
 
@@ -357,8 +357,8 @@
         (function () {
             var CK = {
                 formActionUrl: "{{CK_FORM_ACTION_URL}}",
-                leadMagnetName: "All YouTube Scripts",
-                leadMagnetUrl: "{{SITE_URL}}/scripts"
+                leadMagnetName: "All YouTube Resources",
+                leadMagnetUrl: "{{SITE_URL}}/resources"
             };
 
             var form = document.getElementById('lm-form');
@@ -386,7 +386,7 @@
                 })
                     .then(function (res) { return res.json().catch(function () { return {}; }); })
                     .then(function () {
-                        msg.textContent = "You're in! All scripts are unlocked below.";
+                        msg.textContent = "You're in! All resources are unlocked below.";
                         msg.className = 'lm-message success';
                         window.LinckoScripts.markUnlocked();
                         setTimeout(function () {

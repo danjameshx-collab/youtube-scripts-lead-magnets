@@ -3,6 +3,10 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/resources",
+      "destination": "/all"
+    },
+    {
       "source": "/scripts",
       "destination": "/all"
     }

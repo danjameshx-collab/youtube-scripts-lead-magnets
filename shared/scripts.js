@@ -22,7 +22,7 @@
             var pill = card.querySelector('.card-pill');
             if (pill) pill.textContent = 'Unlocked';
             var label = card.querySelector('.card-cta-label');
-            if (label) label.textContent = 'Open Script';
+            if (label) label.textContent = 'Open Resource';
         });
         document.querySelectorAll('[data-unlocked-text]').forEach(function (el) {
             el.textContent = el.getAttribute('data-unlocked-text');
