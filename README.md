@@ -17,13 +17,19 @@ One site, one landing page per YouTube video, at `lincko.<tld>/lp/<slug>`. Repla
 
 ## Generating a new landing page (per video, going forward)
 
-1. Copy `content/example.json` to `content/<slug>.json` and fill it in: headline, subheadline, the Gamma doc link, etc.
+1. Copy `content/example.json` to `content/<slug>.json` and fill it in: headline, subheadline, the Gamma doc link, `youtubeId` (the part after `watch?v=`, used for the thumbnail) and `published` (YYYY-MM-DD, sets the order in the library, newest first). Optional `cardTitle` overrides the title on library cards. `"hidden": true` keeps a page out of the library.
 2. Run:
    ```
-   node scripts/new-landing-page.js content/<slug>.json
+   node scripts/build.js
    ```
-   This writes `lp/<slug>/index.html`.
-3. Commit and push. It deploys automatically at `/lp/<slug>`.
+   This rebuilds every `lp/<slug>/index.html` and the library page `all/index.html` (every page lists every script, so the whole site is rebuilt).
+3. Commit and push. It deploys automatically at `/lp/<slug>`, and `/scripts` picks it up.
+
+## The script library
+
+- `/scripts`: every script on one page. One signup unlocks all of them in place.
+- Each `/lp/<slug>` page shows the video thumbnail, headline and form, then a "Get every script" box and cards for every other script.
+- After someone signs up on any page, their browser remembers it, so every card opens its Gamma doc directly with no second signup.
 
 ## Structure
 
@@ -32,4 +38,6 @@ One site, one landing page per YouTube video, at `lincko.<tld>/lp/<slug>`. Repla
 - `config/convertkit.json`: the one reusable ConvertKit form's action URL / IDs
 - `content/*.json`: one config file per video's landing page
 - `lp/<slug>/index.html`: generated output, one folder per video
-- `scripts/new-landing-page.js`: the generator
+- `scripts/build.js`: the generator (`scripts/new-landing-page.js` still works and does the same)
+- `template/scripts.html` -> `all/index.html`: the library page, served at `/scripts`
+- `shared/scripts-grid.css`, `shared/scripts.js`: card styles and unlock logic shared by every page

@@ -1,5 +1,8 @@
 {
   "slug": "example",
+  "youtubeId": "",
+  "published": "2026-01-01",
+  "hidden": true,
   "pageTitle": "Lincko :: Example Lead Magnet",
   "badgeText": "For B2B Businesses",
   "headlineHtml": "How To Create <br><span class=\"green\">Awesome Strategy Docs</span> <br>To Close Whale Clients",

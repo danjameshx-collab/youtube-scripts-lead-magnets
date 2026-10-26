@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lincko :: How I'd Book A Meeting With Alex Hormozi</title>
     <link rel="icon" type="image/png" href="/shared/favicon.png">
+    <link rel="stylesheet" href="/shared/scripts-grid.css">
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -298,6 +299,88 @@
             opacity: 0.5;
         }
 
+        /* ── Video thumbnail (this video) ── */
+        .video-thumb {
+            position: relative;
+            max-width: 520px;
+            margin: 0 auto 36px;
+        }
+
+        .video-thumb::before {
+            content: '';
+            position: absolute;
+            inset: -28px;
+            background: radial-gradient(ellipse at center, rgba(76, 217, 123, 0.18), transparent 65%);
+            z-index: -1;
+        }
+
+        .video-thumb-frame {
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(76, 217, 123, 0.3);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+            background: #0a1510;
+        }
+
+        .video-thumb-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-thumb-tag {
+            position: absolute;
+            left: 50%;
+            bottom: -13px;
+            transform: translateX(-50%);
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            white-space: nowrap;
+            background: #030806;
+            border: 1px solid rgba(76, 217, 123, 0.4);
+            border-radius: 100px;
+            padding: 5px 14px;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #5dd98a;
+        }
+
+        .video-thumb-tag svg { width: 12px; height: 12px; }
+
+        .hero.has-thumb { padding-top: 56px; }
+        .hero.has-thumb .badge { margin-top: 12px; margin-bottom: 26px; }
+
+        /* ── Already unlocked state ── */
+        .lm-unlocked { display: none; text-align: center; }
+        .is-unlocked .lm-unlocked { display: block; }
+        .is-unlocked #lm-form, .is-unlocked .form-heading, .is-unlocked .lm-note { display: none; }
+
+        .lm-unlocked p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(220, 240, 228, 0.6);
+            margin-bottom: 18px;
+        }
+
+        .lm-open {
+            display: block;
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            background: #12412d;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .lm-open:hover { background: #175a3d; }
+
         /* ── Responsive ── */
         @media (max-width: 700px) {
             .hero {
@@ -324,7 +407,12 @@
     <hr class="divider">
 
     <!-- ── Hero Section ── -->
-    <section class="hero">
+    <section class="hero has-thumb">
+
+        <div class="video-thumb">
+            <div class="video-thumb-frame"><img src="https://i.ytimg.com/vi/UitDT52IKsE/maxresdefault.jpg" alt="How I'd Book A Meeting With Alex Hormozi (New Outreach System)" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"></div>
+            <div class="video-thumb-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg> The script from this video</div>
+        </div>
 
         <div class="badge">
             <span class="badge-dot"></span>
@@ -354,6 +442,11 @@
                 <div class="lm-message" id="lm-message"></div>
             </form>
 
+            <div class="lm-unlocked">
+                <p>You already have access to every script.</p>
+                <a class="lm-open" href="https://gamma.app/docs/Hormozi-Link-gi9pdsd5gv31cmh?mode=doc">Open This Script</a>
+            </div>
+
             <div class="lm-note">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
                 <p>
@@ -368,11 +461,89 @@
 
     
 
+    <div class="section-label"><span>Want more?</span></div>
+
+    <div class="library-head">
+        <h2>Get <span class="green">Every Script</span> I've Made</h2>
+        <p>This is one of 7 scripts from my YouTube videos. Grab them all with one signup, or pick the ones you want below.</p>
+    </div>
+
+    <div class="all-box-wrap">
+        <div class="all-box">
+            <div>
+                <div class="all-kicker">All 7 scripts, one signup</div>
+                <div class="all-title" data-unlocked-text="All 7 Scripts Unlocked">Grab Every Script At Once</div>
+                <div class="all-text">Instant access to every video script in one place. No need to claim them one by one.</div>
+            </div>
+            <a class="all-btn" href="/scripts"><span data-unlocked-text="Open All Scripts">Get All Scripts</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </div>
+    </div>
+
+    <div class="section-label"><span>Or pick a script</span></div>
+
+    <section class="scripts-grid">
+        <a class="script-card" href="/lp/whale-clients-ready-to-buy" data-gamma="https://gamma.app/docs/The-EXACT-System-That-Makes-Whale-Clients-Show-Up-Ready-To-Buy-nk82onhj95ouuan?mode=doc">
+            <div class="card-thumb"><div class="thumb-fallback"><img src="/shared/Lincko-logo.png" alt=""><span>The EXACT System That Makes Whale Clients Show Up Ready To Buy</span></div></div>
+            <div class="card-body">
+                <div class="card-top"><span class="card-num">01</span><span class="card-pill">Free Script</span></div>
+                <h3 class="card-title">The EXACT System That Makes Whale Clients Show Up Ready To Buy</h3>
+                <p class="card-desc">The full system we use to get whales to the call ready to buy: the confirmation page, the instant call and selfie video, the pre-call email sequence, the creative outbound waterfall and the 12 month pipeline.</p>
+                <span class="card-cta"><span class="card-cta-label">Get Script</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+        </a>
+        <a class="script-card" href="/lp/sell-more-online-part-1" data-gamma="https://gamma.app/docs/How-To-Get-A-Meeting-With-Anyone-nva2o0uaav5j9gf?mode=doc">
+            <div class="card-thumb"><img src="https://i.ytimg.com/vi/bjQlfGIFflE/maxresdefault.jpg" alt="How To Get A Meeting With Anyone" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"></div>
+            <div class="card-body">
+                <div class="card-top"><span class="card-num">03</span><span class="card-pill">Free Script</span></div>
+                <h3 class="card-title">How To Get A Meeting With Anyone</h3>
+                <p class="card-desc">The full live keynote on signing whale clients: why attention beats expertise, asymmetric rewards, and the four real methods that get replies from prospects who ignore everything else.</p>
+                <span class="card-cta"><span class="card-cta-label">Get Script</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+        </a>
+        <a class="script-card" href="/lp/sell-more-online-part-2" data-gamma="https://gamma.app/docs/How-To-Get-A-Meeting-With-Anyone-nva2o0uaav5j9gf?mode=doc">
+            <div class="card-thumb"><div class="thumb-fallback"><img src="/shared/Lincko-logo.png" alt=""><span>How To Get A Meeting With Anyone (Live Q&amp;A)</span></div></div>
+            <div class="card-body">
+                <div class="card-top"><span class="card-num">04</span><span class="card-pill">Free Script</span></div>
+                <h3 class="card-title">How To Get A Meeting With Anyone (Live Q&amp;A)</h3>
+                <p class="card-desc">Live, unscripted answers on researching whales, picking the right outreach method for each prospect, and how to actually build the pitch.</p>
+                <span class="card-cta"><span class="card-cta-label">Get Script</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+        </a>
+        <a class="script-card" href="/lp/whale-psychology-tricks" data-gamma="https://gamma.app/docs/yr37dwnmw8rvkl0">
+            <div class="card-thumb"><img src="https://i.ytimg.com/vi/ZeZh8k_YozU/maxresdefault.jpg" alt="15 Psychology Tricks To Make A Whale Reply To You" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"></div>
+            <div class="card-body">
+                <div class="card-top"><span class="card-num">05</span><span class="card-pill">Free Script</span></div>
+                <h3 class="card-title">15 Psychology Tricks To Make A Whale Reply To You</h3>
+                <p class="card-desc">The exact psychological triggers that get whale clients to respond: attention before expertise, the law of reciprocity, and how to build outreach that gets forwarded straight to the decision maker.</p>
+                <span class="card-cta"><span class="card-cta-label">Get Script</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+        </a>
+        <a class="script-card" href="/lp/cold-outreach-knowledge" data-gamma="https://gamma.app/docs/4-Years-Of-Cold-Outreach-Knowledge-In-X-Minutes-9r5bawt5jqrexig?mode=doc">
+            <div class="card-thumb"><img src="https://i.ytimg.com/vi/9hrHHvsitpI/maxresdefault.jpg" alt="4 Years Of Cold Outreach Knowledge In Minutes" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"></div>
+            <div class="card-body">
+                <div class="card-top"><span class="card-num">06</span><span class="card-pill">Free Script</span></div>
+                <h3 class="card-title">4 Years Of Cold Outreach Knowledge In Minutes</h3>
+                <p class="card-desc">Every lesson, framework, and mistake from 4 years of cold outreach, condensed into one guide so you don't have to learn it the hard way.</p>
+                <span class="card-cta"><span class="card-cta-label">Get Script</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+        </a>
+        <a class="script-card" href="/lp/land-a-meeting" data-gamma="https://gamma.app/docs/The-ONLY-Guide-You-Need-To-Land-A-Meeting-With-Any-Prospect-oij3k3dzkktgvap?mode=doc">
+            <div class="card-thumb"><img src="https://i.ytimg.com/vi/F7PwlS47LiI/maxresdefault.jpg" alt="The Only Guide You Need To Land A Meeting With Any Prospect" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"></div>
+            <div class="card-body">
+                <div class="card-top"><span class="card-num">07</span><span class="card-pill">Free Script</span></div>
+                <h3 class="card-title">The Only Guide You Need To Land A Meeting With Any Prospect</h3>
+                <p class="card-desc">The exact playbook to get any prospect to say yes to a meeting. No more cold outreach that goes nowhere.</p>
+                <span class="card-cta"><span class="card-cta-label">Get Script</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+        </a>
+    </section>
+
     <!-- ── Footer ── -->
     <footer class="footer">
         <img src="/shared/Lincko-logo.png" alt="Lincko">
     </footer>
 
+    <script src="/shared/scripts.js"></script>
     <script>
         (function () {
             var CK = {
@@ -407,6 +578,7 @@
                 })
                     .then(function (res) { return res.json().catch(function () { return {}; }); })
                     .then(function () {
+                        if (window.LinckoScripts) window.LinckoScripts.markUnlocked();
                         msg.textContent = successText;
                         msg.className = 'lm-message success';
                         form.reset();
