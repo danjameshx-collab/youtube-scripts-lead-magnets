@@ -4,7 +4,7 @@
   "rewrites": [
     {
       "source": "/scripts",
-      "destination": "/all/index.html"
+      "destination": "/all"
     }
   ]
 }
