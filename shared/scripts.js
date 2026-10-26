@@ -1,16 +1,17 @@
 /* Shared behaviour for the script library.
-   Once someone signs up on ANY page, we remember it in their browser, and every
-   script card then opens its Gamma doc directly (no second signup). */
+   Cards always lead to each script's own landing page, so nobody gets a script
+   without giving their details. The only exception: right after someone signs up
+   on /scripts, the cards on that page open the scripts directly (this visit only,
+   nothing is remembered). */
 (function () {
-    var KEY = 'lincko_scripts_unlocked';
+    var unlocked = false;
 
-    function isUnlocked() {
-        try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; }
-    }
+    // Clear the old "remembered signup" flag from earlier versions of the site.
+    try { localStorage.removeItem('lincko_scripts_unlocked'); } catch (e) {}
 
-    function markUnlocked() {
-        try { localStorage.setItem(KEY, '1'); } catch (e) {}
-    }
+    function isUnlocked() { return unlocked; }
+
+    function markUnlocked() { unlocked = true; }
 
     function applyUnlocked() {
         if (!isUnlocked()) return;
@@ -39,5 +40,4 @@
     });
 
     window.LinckoScripts = { isUnlocked: isUnlocked, markUnlocked: markUnlocked, applyUnlocked: applyUnlocked };
-    applyUnlocked();
 })();

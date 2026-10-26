@@ -442,11 +442,6 @@
                 <div class="lm-message" id="lm-message"></div>
             </form>
 
-            <div class="lm-unlocked">
-                <p>You already have access to every script.</p>
-                <a class="lm-open" href="https://gamma.app/docs/How-To-Get-A-Meeting-With-Anyone-nva2o0uaav5j9gf?mode=doc">Open This Script</a>
-            </div>
-
             <div class="lm-note">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
                 <p>
@@ -578,7 +573,6 @@
                 })
                     .then(function (res) { return res.json().catch(function () { return {}; }); })
                     .then(function () {
-                        if (window.LinckoScripts) window.LinckoScripts.markUnlocked();
                         msg.textContent = successText;
                         msg.className = 'lm-message success';
                         form.reset();

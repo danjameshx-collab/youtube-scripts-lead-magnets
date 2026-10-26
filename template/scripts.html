@@ -325,7 +325,7 @@
 
             <div class="lm-unlocked">
                 <div class="lm-unlocked-title">All {{SCRIPT_COUNT}} scripts unlocked</div>
-                <p>Click any script below to open it. They stay unlocked on this device.</p>
+                <p>Click any script below to open it. Bookmark this tab if you want to come back to them.</p>
                 <a class="lm-open" href="#all-scripts">See The Scripts</a>
             </div>
 
@@ -361,16 +361,6 @@
 
             var form = document.getElementById('lm-form');
             var msg = document.getElementById('lm-message');
-
-            // Locked cards scroll up to the form instead of leaving the page.
-            document.querySelectorAll('.script-card').forEach(function (card) {
-                card.addEventListener('click', function (e) {
-                    if (window.LinckoScripts.isUnlocked()) return;
-                    e.preventDefault();
-                    document.getElementById('get-all').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    setTimeout(function () { form.first_name.focus({ preventScroll: true }); }, 500);
-                });
-            });
 
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
