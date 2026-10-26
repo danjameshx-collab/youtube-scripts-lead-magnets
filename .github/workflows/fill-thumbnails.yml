@@ -1,0 +1,33 @@
+name: Add thumbnails for newly live videos
+
+# Every hour: check the YouTube channel for videos that just went live and
+# add their thumbnails to any script page still missing one.
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/fill-thumbnails.js
+      - name: Commit and push if anything changed
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            # Committed as Dan so Vercel deploys it like any other push.
+            git config user.name "Dan James"
+            git config user.email "danjameshx@gmail.com"
+            git add -A
+            git commit -m "Add thumbnail for newly live video"
+            git push
+          else
+            echo "Nothing new."
+          fi
