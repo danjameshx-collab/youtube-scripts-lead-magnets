@@ -289,3 +289,48 @@
     .section-label { margin-top: 64px; padding: 0 16px; }
     .library-head { padding: 0 16px; }
 }
+
+/* ── Sort switch (Newest / Most popular) ── */
+.sort-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    max-width: 1040px;
+    margin: -12px auto 18px;
+    padding: 0 24px;
+}
+
+.sort-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(220, 240, 228, 0.4);
+    margin-right: 6px;
+}
+
+.sort-btn {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(220, 240, 228, 0.6);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.sort-btn:hover { color: #ffffff; border-color: rgba(76, 217, 123, 0.35); }
+
+.sort-btn.is-active {
+    color: #5dd98a;
+    background: rgba(42, 120, 70, 0.18);
+    border-color: rgba(60, 160, 90, 0.4);
+}
+
+@media (max-width: 640px) {
+    .sort-bar { justify-content: center; padding: 0 16px; }
+}

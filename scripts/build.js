@@ -52,12 +52,20 @@ function cardTitle(page) {
     return page.cardTitle || page.leadMagnetName;
 }
 
+const SORT_BAR = [
+    '    <div class="sort-bar" role="group" aria-label="Sort scripts">',
+    '        <span class="sort-label">Sort by</span>',
+    '        <button type="button" class="sort-btn is-active" data-sort="date">Newest</button>',
+    '        <button type="button" class="sort-btn" data-sort="views">Most popular</button>',
+    '    </div>'
+].join('\n');
+
 function cardHtml(page, num) {
     const thumb = page.youtubeId
         ? thumbImg(page)
         : '<div class="thumb-fallback"><img src="/shared/Lincko-logo.png" alt=""><span>' + esc(cardTitle(page)) + '</span></div>';
     return [
-        '        <a class="script-card" href="/lp/' + page.slug + '" data-gamma="' + esc(page.leadMagnetUrl) + '">',
+        '        <a class="script-card" href="/lp/' + page.slug + '" data-gamma="' + esc(page.leadMagnetUrl) + '" data-date="' + esc(page.published || '') + '" data-views="' + (Number(page.views) || 0) + '">',
         '            <div class="card-thumb">' + thumb + '</div>',
         '            <div class="card-body">',
         '                <div class="card-top"><span class="card-num">' + String(num).padStart(2, '0') + '</span></div>',
@@ -143,6 +151,8 @@ for (const page of pages) {
         '',
         '    <div class="section-label"><span>Or pick a script</span></div>',
         '',
+        SORT_BAR,
+        '',
         '    <section class="scripts-grid">',
         others.map((p) => cardHtml(p, numberOf.get(p.slug))).join('\n'),
         '    </section>'
@@ -174,6 +184,7 @@ for (const page of pages) {
 const libTemplate = fs.readFileSync(path.join(ROOT, 'template', 'scripts.html'), 'utf8');
 const libHtml = fill(libTemplate, {
     '{{SCRIPT_COUNT}}': String(listed.length),
+    '{{SORT_BAR}}': SORT_BAR,
     '{{CARDS_HTML}}': listed.map((p) => cardHtml(p, numberOf.get(p.slug))).join('\n'),
     '{{CK_FORM_ACTION_URL}}': ck.formActionUrl,
     '{{SITE_URL}}': SITE_URL

@@ -39,5 +39,36 @@
         card.style.setProperty('--my', (e.clientY - r.top) + 'px');
     });
 
+    // Sort switch: Newest (YouTube upload date) or Most popular (YouTube views).
+    // Card numbers follow whatever order is showing.
+    function sortGrid(grid, by) {
+        var cards = Array.prototype.slice.call(grid.querySelectorAll('.script-card'));
+        cards.sort(function (a, b) {
+            if (by === 'views') {
+                var dv = Number(b.getAttribute('data-views')) - Number(a.getAttribute('data-views'));
+                if (dv) return dv;
+            }
+            return String(b.getAttribute('data-date')).localeCompare(String(a.getAttribute('data-date')));
+        });
+        cards.forEach(function (card, i) {
+            var num = card.querySelector('.card-num');
+            if (num) num.textContent = (i < 9 ? '0' : '') + (i + 1);
+            grid.appendChild(card);
+        });
+    }
+
+    document.querySelectorAll('.sort-bar').forEach(function (bar) {
+        var grid = bar.nextElementSibling;
+        while (grid && !grid.classList.contains('scripts-grid')) grid = grid.nextElementSibling;
+        if (!grid) return;
+        sortGrid(grid, 'date');
+        bar.addEventListener('click', function (e) {
+            var btn = e.target.closest('.sort-btn');
+            if (!btn) return;
+            bar.querySelectorAll('.sort-btn').forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+            sortGrid(grid, btn.getAttribute('data-sort'));
+        });
+    });
+
     window.LinckoScripts = { isUnlocked: isUnlocked, markUnlocked: markUnlocked, applyUnlocked: applyUnlocked };
 })();

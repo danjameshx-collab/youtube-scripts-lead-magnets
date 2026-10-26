@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/fill-thumbnails.js
+      - run: node scripts/refresh-views.js
       - name: Commit and push if anything changed
         run: |
           if [ -n "$(git status --porcelain)" ]; then
