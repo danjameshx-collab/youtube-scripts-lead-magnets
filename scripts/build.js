@@ -16,7 +16,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const SITE_URL = 'https://youtube-scripts-lead-magnets.vercel.app';
+const SITE_URL = 'https://lincko-youtube-scripts.vercel.app';
 
 function fail(msg) {
     console.error('Error: ' + msg);
