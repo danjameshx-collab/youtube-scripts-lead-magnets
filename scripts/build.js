@@ -60,7 +60,7 @@ function cardHtml(page, num) {
         '        <a class="script-card" href="/lp/' + page.slug + '" data-gamma="' + esc(page.leadMagnetUrl) + '">',
         '            <div class="card-thumb">' + thumb + '</div>',
         '            <div class="card-body">',
-        '                <div class="card-top"><span class="card-num">' + String(num).padStart(2, '0') + '</span><span class="card-pill">Free Script</span></div>',
+        '                <div class="card-top"><span class="card-num">' + String(num).padStart(2, '0') + '</span></div>',
         '                <h3 class="card-title">' + esc(cardTitle(page)) + '</h3>',
         '                <p class="card-desc">' + esc(page.subheadline) + '</p>',
         '                <span class="card-cta"><span class="card-cta-label">Get Script</span> ' + ARROW + '</span>',
