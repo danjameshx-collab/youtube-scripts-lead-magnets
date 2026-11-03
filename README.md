@@ -25,6 +25,10 @@ One site, one landing page per YouTube video, at `lincko.<tld>/lp/<slug>`. Repla
    This rebuilds every `lp/<slug>/index.html` and the library page `all/index.html` (every page lists every script, so the whole site is rebuilt).
 3. Commit and push. It deploys automatically at `/lp/<slug>`, and `/scripts` picks it up.
 
+## Resources hosted on this site (no Gamma doc)
+
+When a video has no Gamma doc, write the resource as `content/guides/<slug>.md` (sections split by `---` lines, first `# ` line is the title, a section headed `# Full transcript` gets the transcript styling and a "jump to" link). `node scripts/build.js` turns it into `/guide/<slug>`; set that video's `leadMagnetUrl` to `https://lincko-youtube-scripts.vercel.app/guide/<slug>`. Guide pages are `noindex` so Google doesn't skip the signup form. Files such as PDFs go in `files/` and are linked the same way (`/files/<name>.pdf`).
+
 ## The script library
 
 - `/scripts`: every script on one page. One signup unlocks all of them in place.

@@ -192,3 +192,88 @@ const libHtml = fill(libTemplate, {
 fs.mkdirSync(path.join(ROOT, 'all'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'all', 'index.html'), libHtml, 'utf8');
 console.log('Built: /resources (' + listed.length + ' scripts)');
+
+// ── Guide pages: content/guides/<slug>.md -> guide/<slug>/index.html ──
+// For videos whose resource lives on this site (not in Gamma): the key lessons
+// plus the full transcript. Point the video's leadMagnetUrl at SITE_URL/guide/<slug>.
+// Sections are split by "---" lines; the first "# " heading is the page title.
+
+function inlineMd(s) {
+    return esc(s)
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>');
+}
+
+function mdBlocks(md) {
+    const lines = md.split(/\r?\n/);
+    const out = [];
+    let i = 0;
+    while (i < lines.length) {
+        const line = lines[i];
+        if (!line.trim()) { i++; continue; }
+        if (line.startsWith('# ')) { out.push('<h2>' + inlineMd(line.slice(2)) + '</h2>'); i++; continue; }
+        if (line.startsWith('## ')) { out.push('<h3>' + inlineMd(line.slice(3)) + '</h3>'); i++; continue; }
+        if (line.startsWith('|')) {
+            const rows = [];
+            while (i < lines.length && lines[i].startsWith('|')) rows.push(lines[i++]);
+            const cells = (r) => r.trim().replace(/^\||\|$/g, '').split('|').map((c) => c.trim());
+            const head = cells(rows[0]);
+            const body = rows.slice(2).map(cells);
+            out.push('<div class="table-wrap"><table><thead><tr>' + head.map((c) => '<th>' + inlineMd(c) + '</th>').join('') +
+                '</tr></thead><tbody>' + body.map((r) => '<tr>' + r.map((c) => '<td>' + inlineMd(c) + '</td>').join('') + '</tr>').join('') +
+                '</tbody></table></div>');
+            continue;
+        }
+        const listType = /^- /.test(line) ? 'ul' : /^\d+\. /.test(line) ? 'ol' : null;
+        if (listType) {
+            const items = [];
+            const re = listType === 'ul' ? /^- / : /^\d+\. /;
+            while (i < lines.length && re.test(lines[i])) items.push(lines[i++].replace(re, ''));
+            out.push('<' + listType + '>' + items.map((t) => '<li>' + inlineMd(t) + '</li>').join('') + '</' + listType + '>');
+            continue;
+        }
+        const para = [];
+        while (i < lines.length && lines[i].trim() && !/^(# |## |\||- |\d+\. )/.test(lines[i])) para.push(lines[i++]);
+        out.push('<p>' + inlineMd(para.join(' ')) + '</p>');
+    }
+    return out.join('\n');
+}
+
+const guideDir = path.join(ROOT, 'content', 'guides');
+const guideTemplate = fs.readFileSync(path.join(ROOT, 'template', 'guide.html'), 'utf8');
+const bySlug = new Map(pages.map((p) => [p.slug, p]));
+if (fs.existsSync(guideDir)) {
+    for (const f of fs.readdirSync(guideDir).filter((n) => n.endsWith('.md'))) {
+        const slug = f.replace(/\.md$/, '');
+        const page = bySlug.get(slug) || {};
+        const sections = fs.readFileSync(path.join(guideDir, f), 'utf8').split(/\r?\n---\r?\n/).map((s) => s.trim()).filter(Boolean);
+        const first = sections.shift();
+        const titleMatch = first.match(/^# (.+)$/m);
+        if (!titleMatch) fail('content/guides/' + f + ' must start with a "# Title" line');
+        const title = titleMatch[1].trim();
+        const intro = mdBlocks(first.replace(titleMatch[0], '').trim());
+
+        let hasTranscript = false;
+        const sectionsHtml = sections.map((s) => {
+            const isTranscript = /^# Full transcript/i.test(s);
+            if (isTranscript) hasTranscript = true;
+            return '        <section class="card' + (isTranscript ? ' transcript" id="transcript' : '') + '">\n' + mdBlocks(s) + '\n        </section>';
+        }).join('\n');
+
+        const thumbHtml = page.youtubeId
+            ? '<a class="hero-thumb" href="https://www.youtube.com/watch?v=' + page.youtubeId + '" target="_blank" rel="noopener">' + thumbImg(page).replace(' loading="lazy"', '') + '</a>'
+            : '';
+        const html = fill(guideTemplate, {
+            '{{PAGE_TITLE}}': esc('Lincko :: ' + title),
+            '{{TITLE}}': inlineMd(title),
+            '{{INTRO_HTML}}': intro,
+            '{{THUMB_HTML}}': thumbHtml,
+            '{{JUMP_HTML}}': hasTranscript ? '<div><a class="jump" href="#transcript">Jump to the full transcript</a></div>' : '',
+            '{{SECTIONS_HTML}}': sectionsHtml
+        });
+        const outDir = path.join(ROOT, 'guide', slug);
+        fs.mkdirSync(outDir, { recursive: true });
+        fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf8');
+        console.log('Built: /guide/' + slug);
+    }
+}

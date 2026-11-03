@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Lincko :: AI Is Going To Destroy Your Outreach</title>
+    <link rel="icon" type="image/png" href="/shared/favicon.png">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #030806;
+            background-image:
+                radial-gradient(ellipse 70% 40% at 50% -5%, rgba(18, 60, 32, 0.5) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 30% at 50% 105%, rgba(12, 45, 22, 0.3) 0%, transparent 55%);
+            color: #e8f0ea;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        .header {
+            display: flex; align-items: center; justify-content: center;
+            padding: 28px 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .header img { height: 48px; width: auto; display: block; }
+
+        .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+        .hero { text-align: center; padding: 64px 8px 40px; }
+        .badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(42, 120, 70, 0.18); border: 1px solid rgba(60, 160, 90, 0.3);
+            border-radius: 100px; padding: 6px 18px; font-size: 12px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase; color: #5dd98a; margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-size: clamp(30px, 5.5vw, 48px); font-weight: 800; line-height: 1.13;
+            letter-spacing: -0.025em; color: #fff; margin-bottom: 20px;
+        }
+        .hero p { font-size: clamp(16px, 2.2vw, 19px); line-height: 1.65; color: rgba(220, 240, 228, 0.65); }
+        .hero-thumb {
+            margin: 36px auto 0; max-width: 560px; border-radius: 16px; overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+        }
+        .hero-thumb img { display: block; width: 100%; height: auto; }
+        .jump {
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 28px;
+            color: #4cd97b; font-size: 14px; font-weight: 600; text-decoration: none;
+            border: 1px solid rgba(76, 217, 123, 0.35); border-radius: 100px; padding: 9px 18px;
+        }
+        .jump:hover { background: rgba(76, 217, 123, 0.1); }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px; padding: 36px 32px; margin-bottom: 20px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        .card h2 { font-size: clamp(22px, 3.4vw, 28px); font-weight: 800; color: #fff; letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 18px; }
+        .card h3 { font-size: 18px; font-weight: 700; color: #fff; margin: 24px 0 10px; }
+        .card p, .card li { font-size: 16.5px; line-height: 1.7; color: rgba(225, 240, 230, 0.82); }
+        .card p + p, .card p + ul, .card p + ol, .card ul + p, .card ol + p, .card table + p, .card p + table { margin-top: 14px; }
+        .card ul, .card ol { padding-left: 22px; }
+        .card li + li { margin-top: 8px; }
+        .card li::marker { color: #4cd97b; }
+        .card strong { color: #fff; font-weight: 700; }
+        .card em { color: #c9f0d6; }
+        .table-wrap { overflow-x: auto; margin-top: 4px; }
+        table { width: 100%; border-collapse: collapse; font-size: 15px; }
+        th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); vertical-align: top; line-height: 1.5; color: rgba(225, 240, 230, 0.82); }
+        th { color: #4cd97b; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+        td:first-child { color: #fff; font-weight: 600; }
+
+        .card.transcript { background: rgba(255, 255, 255, 0.02); }
+        .card.transcript p { font-size: 15.5px; color: rgba(225, 240, 230, 0.72); }
+        .card.transcript p:first-of-type { color: rgba(225, 240, 230, 0.5); font-style: italic; }
+
+        .more {
+            text-align: center; padding: 40px 24px; margin: 12px 0 20px;
+            border: 1px solid rgba(76, 217, 123, 0.25); border-radius: 20px;
+            background: rgba(42, 120, 70, 0.1);
+        }
+        .more h2 { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+        .more p { color: rgba(220, 240, 228, 0.65); line-height: 1.6; margin-bottom: 22px; }
+        .more a {
+            display: inline-flex; align-items: center; gap: 8px; background: #4cd97b; color: #04130a;
+            font-weight: 700; text-decoration: none; padding: 13px 24px; border-radius: 12px;
+        }
+        .more a svg { width: 18px; height: 18px; }
+
+        .footer { padding: 40px 24px 56px; text-align: center; }
+        .footer img { height: 28px; opacity: 0.5; }
+
+        @media (max-width: 560px) {
+            .hero { padding: 44px 0 28px; }
+            .card { padding: 26px 20px; border-radius: 16px; }
+            th, td { padding: 10px 8px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="/shared/Lincko-logo.png" alt="Lincko">
+    </header>
+
+    <main class="wrap">
+        <section class="hero">
+            <div class="badge">Free resource from Dan James</div>
+            <h1>AI Is Going To Destroy Your Outreach</h1>
+            <p>Unless you make these changes.</p>
+            
+            <div><a class="jump" href="#transcript">Jump to the full transcript</a></div>
+        </section>
+
+        <section class="card">
+<h2>Who this is for</h2>
+<p>Anyone booking calls through outbound who has noticed cold email working worse than it used to.</p>
+<p><strong>Who am I?</strong> I'm Dan James. I scaled a previous content agency from zero to 30K a month in 60 days by booking whale meetings, and my offer now is guaranteeing whale clients for other businesses.</p>
+        </section>
+        <section class="card">
+<h2>What is happening</h2>
+<ul><li><strong>AI has made outbound easy for everyone.</strong> Anyone can spin up a cold email campaign or automation sequence in Claude Code today. Whole companies (like ColdIQ) now live inside it.</li><li><strong>Social platforms are fighting back</strong> with AI slop filters. Email and DMs have no police, so nobody will stop the flood.</li><li><strong>Every channel gets attacked:</strong> email, video, cold calling. More senders means lower conversion rates.</li><li>On sales calls I hear it every week: &quot;one of the reasons we wanted to speak to you is our cold email isn't working as well.&quot;</li></ul>
+        </section>
+        <section class="card">
+<h2>The one thing AI can't attack: human connection</h2>
+<p>Until robots are indistinguishable from people, real human connection can't be copied by someone in their mum's basement. So put your eggs there. Here are three ways to do it.</p>
+        </section>
+        <section class="card">
+<h2>1. The strategy document</h2>
+<p>A 30 to 50+ page document where you research the prospect in granular detail and explain exactly how you'll help.</p>
+<ol><li><strong>Find the problem.</strong> Go through their whole funnel. Links broken? No emails arriving?</li><li><strong>Tie it to money.</strong> &quot;Your automations aren't running, so clients come to calls colder, so your close rate drops, so you lose money.&quot;</li><li><strong>Make a no-brainer offer.</strong> &quot;I'll build your first automation for $0, then we can talk about working together.&quot;</li><li><strong>Add social proof.</strong> The problem, what we did, what happened, the result (for example: email consumption from 0% to 75%, plus 150K in extra cash collected).</li><li><strong>Give real deliverables.</strong> The test: if they paid you $5,000 to $10,000, what would you give them? Give that for free.</li></ol>
+<p>Build it as a webpage or a Gamma doc, not a Google Doc, so you know when they open it. I've booked hundreds of calls with this.</p>
+        </section>
+        <section class="card">
+<h2>2. A personal gift in the post</h2>
+<p>You need their work address. Then address it to the key decision maker.</p>
+<p><strong>Example:</strong> your prospect is a huge Rafael Nadal fan. Find a signed Nadal racket on eBay or Etsy (around $150). Add a handwritten note: &quot;We hope you love this racket as much as we'd love to work with you. Call this number, scan this QR code or message me on WhatsApp when you receive this.&quot; Add a photo of you smiling (with your family if you have one). A face goes a long way.</p>
+<p>They'll show their partner, their family and their friends, and they'll call you. The gift grabs attention first. You sell second. Selin Kocalar did this with rugs sent to startups like Cluely and it went viral.</p>
+        </section>
+        <section class="card">
+<h2>3. Events</h2>
+<p>Put on events or go to them. Yes, there's travel and cost, but being in person speeds the sales process up like crazy. Jordan Platten's biggest regret about events was not starting sooner, because he always left with clients.</p>
+<ul><li>Go where the person you want to work with will be.</li><li>Bring a printed 50-page proposal in a binder: &quot;We came because we thought you might be here.&quot;</li><li>Even if you meet someone lower down, they become your <strong>champion</strong> and take it to their boss. Mid-market and enterprise sales is all about creating champions.</li></ul>
+        </section>
+        <section class="card">
+<h2>The takeaway</h2>
+<p>While everyone else sends Claude Code emails, turn up in person or send something bespoke that makes them think &quot;this is for us specifically.&quot; Whales need that before they'll even have a conversation.</p>
+        </section>
+        <section class="card transcript" id="transcript">
+<h2>Full transcript</h2>
+<p>Everything I said in the video, word for word (lightly tidied so it reads well).</p>
+<p>AI is going to destroy your outreach unless you make some changes, because Claude Code and every single AI platform is making it so easy to send outreach these days that any idiot living in their mom's basement can start a cold email campaign, can create an automation sequence, and message tons of people. So it's important that you make some changes to your outreach in order to continue to book calls and continue to make money. That's what this entire video is all about. So, before we get into all of that, you probably don't know who the hell I am. So my name is Dan James, and I scaled a previous content agency from zero to, 30K a month in 60 days, and I was able to do that by booking tons of whale meetings. And I've also, started a new offer all around guaranteeing whale clients to people. And that's why my outreach is so good because we've been able to just book meetings with anyone we want.</p>
+<p>And we have a full social proof deck as well as a bunch of other resources for you below.</p>
+<p>So first and foremost, you go to AI, and then you type in like latest updates today. The updates that you'll see are ridiculous. The speed at which AI is moving is unprecedented. And you've got some people who are sitting here and saying, &quot;AI won't do this, AI won't do that.&quot; And there's some people saying, &quot;It's all over. AI's going to steal all of our jobs.&quot; Now, before we get into either side of the mania and hysteria, I think we can conclude this definitively because it's already happening.</p>
+<p>AI has lowered the barriers to entry to do outbound. That is a fact. It is easier than ever to spin up a cold email campaign and to start messaging people. That can't be debated because it's happening right now. There are entire companies, for example, ColdIQ, where they now just live inside Claude Code. They just help people utilize Claude Code with their outbound. So, because the barriers to entry are lowering, things are changing, as I mentioned before.</p>
+<p>And we've seen the barriers to entry decrease for outbound, but also on social media too. So if you look on LinkedIn, I think maybe Instagram are doing it. YouTube will probably roll it out next. They now have AI slop filters. So because these platforms are being attacked by AI slop, they're thinking, damn, we have to police this.&quot; But outreach and outbound doesn't have any police. Doesn't have any governing body that's saying, &quot;Oh, we don't want this on the platform,&quot; because it's very simply email. It's DM, and no one can stop you from doing that. So, email is going to be attacked by AI. It already has. Video is going to be attacked. Cold calling is going to be attacked.</p>
+<p>All of the different methods of doing outbound are going to be attacked. And because they're going to be attacked by AI, more people can do them, which means the conversion rate drops. So, like, the amount of sales calls that I've hopped on in the last week, two weeks, and they say verbatim, &quot;Yes, one of the reasons why we wanted to speak to you is because our cold email isn't working as well.&quot; If I got paid every single time I heard that on a sales call, me and Bezos would have yachts together. So it's key that you are keeping up with tactics that are going to continue to have high conversion rates. Now, one thing that can't be attacked is human connection. Because, again, until AI and robots are good enough where it's indistinguishable between me and a human being, who knows when that will happen, that can't be attacked.</p>
+<p>So we can bank on human connection being a great way to do outbound. Now, human connection can still happen via the internet. It can still happen via social media. But ultimately, it's human being A and human being B developing some kind of business relationship or some kind of connection, and we move forward from there. When you message someone on email, you're just messaging another human. Like, they receive the email on their phone or on their laptop or whatever. When you're messaging someone on LinkedIn, I think they forget that there's actually another human being behind the screen.</p>
+<p>So that's what we put all our eggs into. So because we know that human connection isn't going to be attacked, let's look at and think about some of the ways that we can continue to do outbound that will not be attacked by AI, can't be replicated by some schmuck in his mother's basement, and we can utilize to scale and sign massive clients. Because ultimately, that's what we want to do. We want to sign the big clients. Now, in my opinion, some of the best ways to be able to, sign large clients via human connection that can't be attacked by AI is the following. This technically Can be attacked by AI and almost has been. But, the core value proposition, the core argument you're making is still very strong, and that's a 50-plus page, 30-plus page, however long, strategy document.</p>
+<p>Now, I've made tons of videos around how to make effective strategy documents, but we can still get into it. Now, what all a strategy document is you doing copious amounts of research, understanding the prospect in granular detail, and then explaining to them exactly how you want to help. So, for example, let's say let's say you do AI automations for companies, okay? You do AI automations. You then find out what problems they're having in their automations. You go through the, their entire funnel. You don't receive any emails.</p>
+<p>The funnel breaks here. These links aren't working, et cetera. Then you jot down all the different problems you see, because that's ammunition that you can use in your strategy document. So you've figured out what problem they have, you've figured out why it's a problem, and then you can tie it to an actual tangible issue that's costing them money. So we can do the example together. Your automations aren't running, and because your automations aren't running, clients aren't receiving your emails, and they're coming to the calls colder than they are, which is decreasing your close rate, which is costing you money. I want to solve this problem by making your first automation for a grand total of $0.</p>
+<p>I'll make it completely for free for you, and then we can have a wider conversation around what it looks like to work together. That's a very no-brainer offer and very easy to implement. So that is the core idea of a strategy document. Now, you can also go around this by, adding your social proof too. That's very pivotal. So you can say, &quot;We've been able to help many businesses just like you,&quot; and then you can give an example. They achieved this result.</p>
+<p>Once we built their automations, the traffic came much, warmer because they were consuming the emails, and here their email consumption rate went from 10%, 'cause they weren't reading them, or 0% to 75% consumption rate, which increased the close rate and led to an extra 150K in cash collected. Do you see how we've walked through this is the problem, this is what we do to solve the problem, this is what happens when you solve the problem. This was the result. You walk them through. And another thing that I love to do in a strategy document is by giving real deliverables. Now, this does depend on your offer. If you're doing AI automation, it can be difficult to give deliverables if you're doing that.</p>
+<p>But if you can, for example, you do YouTube videos for people, offer them a YouTube video, or if you have a service where you do something with Amazon, offer them something that would actually be beneficial to their listing. Whatever it may be. It doesn't really matter. A great litmus test for this is if somebody paid you $10,000 or $5,000, what would you offer to them? What would you actually give them? Give that for free. It's going to be valuable.</p>
+<p>And that doesn't have to be a service. It could just be something that they could consume and they're like, &quot;Wow, this is actually incredible.&quot; I've used this tactic to book hundreds upon hundreds upon hundreds upon hundreds of calls. It was absurd how many calls I booked with this strategy. And best of all, you can utilize Claude Code to do this all for you. You can create a webpage, or you could do it via Gamma Doc. Preferably not a Google Doc, because when someone opens it, you need to know that they've opened it too.</p>
+<p>So that's strategy documents for you.</p>
+<p>The next thing, is you could send them something personal or a personal gift in the post, so via direct mail. Now, there are some issues with this, strategy or this outbound tactic, and number one is you need to know their work address. Now, if your ICP, are individuals and you can't get their home address, that's another story entirely. But if it is a business address, you can utilize that to the fullest, and all you have to do is just address the core decision-maker.</p>
+<p>So let's say for example, let's create a real example here. Let's say your prospect is a massive Rafael Nadal fan, okay? They love Rafael Nadal. They love what he stands for. He's supposed to be a nice guy too. So you then go onto eBay or whatever, Etsy or whatever the hell, and you find a signed tennis racket from Rafael Nadal. It costs 150 bucks.</p>
+<p>Not the end of the world. You then, once you have their work address, can have a handwritten note saying, &quot;Hey, we hope you love this tennis racket as much as we'd love to work with you. Call this number, or follow this QR code, or hit me up on WhatsApp when you receive this.&quot; And then if you're smart, you could print a little photo of you smiling if you're a family man or a family lady or whatever the hell you identify as. I don't care. You could just have you and your family smiling, looking beautiful. That will also increase the close rate.</p>
+<p>A face goes a long way. That person's going to call. They're gonna show their wife. They're gonna show all their family and friends 'cause their status has been elevated, and they're going to call you. Now, you might say, &quot;Oh, well, like, how is that relevant?&quot; All you're doing there is getting their attention. You can explain all the different value propositions and why you want to work together after.</p>
+<p>But the core thing and the most important thing when it comes to working with whales is grabbing their attention first, and that's why I love sending physical goods. There's a lady called Selin Kocalar. I hope I didn't butcher her name. But she sent rugs, for her startup to Cluely and other companies, and it went majorly viral, and they made a ton of money from it because they were able to grab attention first, and then they were able to sell after, sell second.</p>
+<p>The next thing that's great for outbound is by curating events, putting on events or going to events. Now, some people are against going to events because it's effort, it requires work. Sometimes there's an upfront cost, hotels, flights, maybe even the event itself, whatever it may be. But the reason why events work so well is because you're in person, and you could speed up that sales process like crazy. There's a gentleman called Jordan Platten, who's quite big on YouTube, and I remember he was talking about this long before I was ever in business and I was just learning the game. And he said, &quot;My biggest regret about masterminds and events is I didn't start them sooner,&quot; because he would always leave with clients. So, if it's possible for you to go to an event, especially if there's someone that you want to work with, you can go, you can you could even say to them, &quot;Hey, we came to the event because we thought you might be here. You guys do great work and we know we can help. We printed off a 50-page proposal document.&quot;</p>
+<p>This is such a good idea. &quot;50-page proposal document explaining exactly how we wanna work with you guys. Here's the binder.&quot; That person's gonna be like enamored, like, &quot;Wow!&quot; Of course, they're going to go through the binder, but they're also going to be very curious in real time about your services and how you can help. You're going to have the first sales call right there and then at the event, and you've got the prospect where you want them. Even if you don't have the key decision maker.</p>
+<p>Let's say you've come to a gatekeeper or you've come to someone that's a little lower down the totem pole. That person's gonna say, &quot;Wow, this is so interesting,&quot; and they're going to bring it to their boss and say, &quot;This is a very interesting initiative.&quot; And on top of that, because it's in person, they're going to fight for you far more. Mid-market and enterprise sales is all around creating champions in a given company. It's around having people that push the initiative and give a shit and care about this problem being solved. And if you can meet them in person and say, &quot;Hey, this is the problem we're looking to solve for you guys. &quot;This is the core reason why we came to this event.</p>
+<p>We would love to solve this problem for you guys.&quot; The decision maker, if they're there, is definitely gonna hear you out, and even if they're not the decision maker, they're gonna go, &quot;This is probably worth bringing. And on top of that, let's say you're able to get a hold of the core decision maker and the person that's lower doesn't bring it to their boss. The boss will be like, &quot;Why are you not telling me this?&quot; So, these are strategies that rely far more on human connection and are far better ways to cut through the noise. Because whilst everyone's sending Claude Code emails, you can turn up in person or send something bespoke to them that they're gonna think, &quot;Wow, this is for us specifically.&quot; And large whale clients need things there for them specifically in order to even have a conversation, because everybody wants to work with them in the first place.</p>
+        </section>
+
+        <section class="more">
+            <h2>Want more like this?</h2>
+            <p>Every resource from my YouTube videos, in one place.</p>
+            <a href="/resources">See every resource <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <img src="/shared/Lincko-logo.png" alt="Lincko">
+    </footer>
+</body>
+</html>

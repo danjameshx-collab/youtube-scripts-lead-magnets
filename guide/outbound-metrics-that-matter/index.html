@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Lincko :: The Only 4 Outbound Metrics That Matter</title>
+    <link rel="icon" type="image/png" href="/shared/favicon.png">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #030806;
+            background-image:
+                radial-gradient(ellipse 70% 40% at 50% -5%, rgba(18, 60, 32, 0.5) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 30% at 50% 105%, rgba(12, 45, 22, 0.3) 0%, transparent 55%);
+            color: #e8f0ea;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        .header {
+            display: flex; align-items: center; justify-content: center;
+            padding: 28px 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .header img { height: 48px; width: auto; display: block; }
+
+        .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+        .hero { text-align: center; padding: 64px 8px 40px; }
+        .badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(42, 120, 70, 0.18); border: 1px solid rgba(60, 160, 90, 0.3);
+            border-radius: 100px; padding: 6px 18px; font-size: 12px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase; color: #5dd98a; margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-size: clamp(30px, 5.5vw, 48px); font-weight: 800; line-height: 1.13;
+            letter-spacing: -0.025em; color: #fff; margin-bottom: 20px;
+        }
+        .hero p { font-size: clamp(16px, 2.2vw, 19px); line-height: 1.65; color: rgba(220, 240, 228, 0.65); }
+        .hero-thumb {
+            margin: 36px auto 0; max-width: 560px; border-radius: 16px; overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+        }
+        .hero-thumb img { display: block; width: 100%; height: auto; }
+        .jump {
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 28px;
+            color: #4cd97b; font-size: 14px; font-weight: 600; text-decoration: none;
+            border: 1px solid rgba(76, 217, 123, 0.35); border-radius: 100px; padding: 9px 18px;
+        }
+        .jump:hover { background: rgba(76, 217, 123, 0.1); }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px; padding: 36px 32px; margin-bottom: 20px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        .card h2 { font-size: clamp(22px, 3.4vw, 28px); font-weight: 800; color: #fff; letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 18px; }
+        .card h3 { font-size: 18px; font-weight: 700; color: #fff; margin: 24px 0 10px; }
+        .card p, .card li { font-size: 16.5px; line-height: 1.7; color: rgba(225, 240, 230, 0.82); }
+        .card p + p, .card p + ul, .card p + ol, .card ul + p, .card ol + p, .card table + p, .card p + table { margin-top: 14px; }
+        .card ul, .card ol { padding-left: 22px; }
+        .card li + li { margin-top: 8px; }
+        .card li::marker { color: #4cd97b; }
+        .card strong { color: #fff; font-weight: 700; }
+        .card em { color: #c9f0d6; }
+        .table-wrap { overflow-x: auto; margin-top: 4px; }
+        table { width: 100%; border-collapse: collapse; font-size: 15px; }
+        th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); vertical-align: top; line-height: 1.5; color: rgba(225, 240, 230, 0.82); }
+        th { color: #4cd97b; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+        td:first-child { color: #fff; font-weight: 600; }
+
+        .card.transcript { background: rgba(255, 255, 255, 0.02); }
+        .card.transcript p { font-size: 15.5px; color: rgba(225, 240, 230, 0.72); }
+        .card.transcript p:first-of-type { color: rgba(225, 240, 230, 0.5); font-style: italic; }
+
+        .more {
+            text-align: center; padding: 40px 24px; margin: 12px 0 20px;
+            border: 1px solid rgba(76, 217, 123, 0.25); border-radius: 20px;
+            background: rgba(42, 120, 70, 0.1);
+        }
+        .more h2 { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+        .more p { color: rgba(220, 240, 228, 0.65); line-height: 1.6; margin-bottom: 22px; }
+        .more a {
+            display: inline-flex; align-items: center; gap: 8px; background: #4cd97b; color: #04130a;
+            font-weight: 700; text-decoration: none; padding: 13px 24px; border-radius: 12px;
+        }
+        .more a svg { width: 18px; height: 18px; }
+
+        .footer { padding: 40px 24px 56px; text-align: center; }
+        .footer img { height: 28px; opacity: 0.5; }
+
+        @media (max-width: 560px) {
+            .hero { padding: 44px 0 28px; }
+            .card { padding: 26px 20px; border-radius: 16px; }
+            th, td { padding: 10px 8px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="/shared/Lincko-logo.png" alt="Lincko">
+    </header>
+
+    <main class="wrap">
+        <section class="hero">
+            <div class="badge">Free resource from Dan James</div>
+            <h1>The Only 4 Outbound Metrics That Matter</h1>
+            <p>If you're not tracking your data, you're guessing. These four numbers tell you exactly what's broken.</p>
+            
+            <div><a class="jump" href="#transcript">Jump to the full transcript</a></div>
+        </section>
+
+        <section class="card">
+<h2>Who this is for</h2>
+<p>Anyone running outbound who wants more calls, more leads and more sales.</p>
+<p><strong>Who am I?</strong> I'm Dan James. I've signed lots of whale clients with my outreach strategies and got some ridiculous reactions from prospects.</p>
+        </section>
+        <section class="card">
+<h2>1. AOV (average order value)</h2>
+<p>A man messaged me on LinkedIn and asked seven questions before admitting he was selling $500 a year software. Four months of manual outreach, no buyers.</p>
+<p>$500 a year is about $42 a month. Message 10 people and even if <strong>all</strong> of them buy, that's $5,000 a year. Not worth the manual work.</p>
+<ul><li><strong>Low AOV?</strong> Keep what it costs to win a customer low: run ads or make content.</li><li><strong>Outreach works best</strong> when each deal is big enough to justify the effort, or when you can raise the order value straight away.</li></ul>
+        </section>
+        <section class="card">
+<h2>2. Positive reply rate</h2>
+<p>An early number in the funnel, but it tells you two things:</p>
+<ul><li>Your <strong>lead list</strong> is good (one of the most important parts of outbound).</li><li>Your <strong>offer</strong> is good. People care and reply &quot;this is great, how can we talk?&quot;</li></ul>
+        </section>
+        <section class="card">
+<h2>3. Follow-up data</h2>
+<p>How many times you follow up, and the positive replies you get each time. <strong>All of the money is in the follow-up.</strong> With creative outbound the reply often comes on the seventh or eighth message.</p>
+<p>Track what percentage of prospects get 6+ messages. If it isn't 95% to 100%, you're leaving money on the table.</p>
+        </section>
+        <section class="card">
+<h2>4. Book rate</h2>
+<p>The last number in the funnel and the one that matters most: how many calls actually get booked.</p>
+<p>Read it last, alongside the others:</p>
+<ul><li>Bad book rate plus bad follow-up = you're not following up.</li><li>Good follow-up, good AOV and lots of positive replies, but a bad book rate = something breaks between &quot;yes&quot; and the booking. Are you calling leads fast enough? Is your calendar too full for them to find a time?</li></ul>
+        </section>
+        <section class="card">
+<h2>Use them to find the problem</h2>
+<div class="table-wrap"><table><thead><tr><th>If this is bad</th><th>It probably means</th></tr></thead><tbody><tr><td>AOV</td><td>Outreach isn't worth it, or you're not collecting enough cash up front</td></tr><tr><td>Positive reply rate</td><td>Wrong lead list, or the offer isn't as good as you think</td></tr><tr><td>Follow-up data</td><td>You're not following up enough, or your follow-ups are &quot;just bumping this&quot; with no value</td></tr><tr><td>Book rate</td><td>Something else in the funnel is broken</td></tr></tbody></table></div>
+        </section>
+        <section class="card transcript" id="transcript">
+<h2>Full transcript</h2>
+<p>Everything I said in the video, word for word (lightly tidied so it reads well).</p>
+<p>The only four outbound metrics that actually matter. Now, when you're doing outbound, there's so many different pieces of data. If you're not tracking your data, that is crazy. So we're going to look at the only things that are important to you being able to book calls, get tons of leads, and ultimately make the sale. Now, if you don't know who I am, my name is Dan James, and I've been able to sign tons of whale clients with my outreach strategies and get pretty ridiculous reactions, if I don't say so myself, from the strategies that I've used.</p>
+<p>Now let's get straight into the different metrics, shall we? So the first metric that we have, is AOV. Now, AOV stands for average order value. Now, I wanna tell you a brief story 'cause stories are always, make things more fun and memorable. So I was on LinkedIn one time and I got a connection request from this gentleman and he sent me a DM on LinkedIn. No problem. I'm all for outreach, of course.</p>
+<p>And he was asking me a bunch of questions as people do on LinkedIn and I'm answering the questions and he got to his seventh question. I eventually said, &quot;Okay, why are you asking me all these questions? What's the point of this?&quot; And he, which I appreciated very directly went, &quot;I'm trying to sell you my software.&quot; And I went, &quot;Okay.&quot; and then we had like a bit of a back and forth and he revealed how much the software was. And in fact, he actually said, &quot;I'm trying to sell you my $500 software or my $500 per year software.&quot; And I was like, &quot;Okay, what's the software?&quot;</p>
+<p>And we had a bit more of a back and forth. And eventually was like, &quot;I don't, I don't need this software in particular.&quot; But I was like, &quot;How has this outreach been working for you?&quot; And he was like, &quot;Not at all. I've been doing this for four months and no one's buying.&quot; And I was like, &quot;Well, one of the key issues here is this isn't even worth it for you.&quot; And he was like, &quot;Why would you say that?&quot;</p>
+<p>And I was like, &quot;Well, your software is $500 per year. So $500 per year comes to what? Just around $40, like $42 a month. What is the point in doing outreach to people, manual outreach to people on LinkedIn, 'cause you can't automate it unless you, hire a VA, for $500 per annum? That makes no sense. Not $5,000, $500. Not even $5,000 a month, $500 per year, $43 per month.&quot;</p>
+<p>And he was like, &quot;Yeah, when you put it like that, this doesn't make sense.&quot; And I was like, &quot;It makes no sense.&quot; I said, &quot;Your cost to acquire a customer should be low, so you should be able to run ads and make content.&quot; He was like, &quot;Yeah, when you put it like that, that's correct.&quot; So average order value is pivotal. If you're going to outreach, it needs to be worth your while to be messaging these people and putting the time and effort in. And if your average order value is too low, then your cost to acquire a customer should be low so you can run ads or you can make content or you can utilize, a strategy that allows you to reach tons of people at once.</p>
+<p>Outreach is best done when you are reaching out to someone where the contract value or the cash collected is going to be massive, so it makes it worth it for all the manual work that you have to do. So average order value is something that people gloss over and they just think, &quot;I gotta do outreach. I gotta do outreach.&quot; like do the math here. If you're messaging 10 people, okay? At $500 per year, okay? If all of them buy, that means you'll make $5,000 per year, like $430 a month. Still not worth it.</p>
+<p>Even if all of them buy, it's still not worth it. So you need a mechanism that makes it worth it or you need to be able to increase the average order value immediately to make it worth it.</p>
+<p>The next one is positive reply rate. So positive reply rate is one of the more upstream metrics, but is very important because if you're getting lots of positive replies, then you know a ton of things are going on. So if you get lots of positive replies, you know your lead list is very good. Lead list is one of the most important things, when it comes to outbound. Also, you can also know that your offer is good. If you're sending people your offer, you're saying, &quot;Hey, this is how we help people,&quot; and they're hitting you back saying, &quot;This is great. This is incredible. How can we talk about this?&quot;</p>
+<p>You know that you've got a relevant lead list, people care about this, and you're hitting them with an offer they care about. So it's important to be able to look at, how many positive replies you're getting, because if you if you're constantly getting ton, then you know it's congruent. You know you've got somebody that cares, and You're offering something to them that they particularly care about. So positive reply rate is a metric that has to absolutely be tracked as well.</p>
+<p>The next metric is a conglomerate of metrics, so I'm cheating a little bit here, but I still think that the point stands, and that is follow-up data. So when I say follow-up data, it's how many times are you following up? And when you are following up, what are your positive replies? I think if people tracked how many messages they actually send for their follow-up, they would be shocked. All of the money is in the follow-up. All of the money is in the follow-up. Especially if you're doing, creative outbound, it can sometimes be in the seventh or even the eighth message.</p>
+<p>But because you've created such a remarkable outreach message, you can do that multiple times. But so many people send one or two messages or three messages, and they don't send any more. So if you actually track your follow-up data, if you track how many, how many prospects are getting six-plus messages, and you see the percentage, if that percentage isn't 100%, if that percentage is not 95%, then you are doing yourself a disservice. You've got to follow through. You've got to send all the different outreach messages. You've got to go through the entire process to squeeze as much juice out of that campaign as possible. So follow-up data is absolutely pivotal to a successful outbound campaign.</p>
+<p>And last but certainly not least is book rate. Now, you can get lots of positive replies, you can be following up, but the amount of calls that you book or the amount of leads that you're able to actually get into your pipeline is ultimately what matters. So, I think what's interesting here is that if you look at book rate last and you look at all the other metrics, it can tell you a different story. It can tell you a different picture. So if your book rate is bad, but your follow-up rate is bad, you know that, okay, cool. If we don't follow up, then we're not gonna book any calls. But if your follow-up rate is great and your AOV is excellent, which is just maths, and, last but certainly not least, your positive reply rate is high, then you know between someone responding positively and booking the call, you're messing up.</p>
+<p>Something's going wrong there. Maybe you're not calling the leads. Maybe you're not responding fast enough, whatever it may be. So you've got to be able to look at all the data and then look at your book rate last to determine what's actually happening. But ultimately, book rate is the metric that is the most downstream and matters the most. Like, I cannot stress that enough. So many people will have a high positive reply rate, but they're not calling their leads or maybe their calendar's constrained, so when somebody goes to book, they can't find a convenient time for them.</p>
+<p>But just understanding your book rate as well will make a significant difference to how you go about outbound, because you can figure out, all right, what's the actual problem here? And ultimately, all we're doing with these metrics is we're diagnosing the problem. If the AOV is too small, then maybe outreach doesn't work or we're not collecting enough cash up front. If the, positive reply rate is low, maybe it's not a relevant lead list or maybe the offer isn't actually quite as good as we think it is. If the follow-up data is bad, then we know we're not following up anywhere near as much as we need to. Or maybe what our follow-ups are poor. We're not hitting them with value.</p>
+<p>We're hitting them with just bumping this or open my message or some other crap like that. And if the book rate is bad, we know that something else is happening in the funnel. It could be contingent upon one of those factors or maybe one of the other minor factors that aren't quite as important. But what we're doing is we're just diagnosing the problem and we're looking at data to tell us what problem it is specifically.</p>
+        </section>
+
+        <section class="more">
+            <h2>Want more like this?</h2>
+            <p>Every resource from my YouTube videos, in one place.</p>
+            <a href="/resources">See every resource <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <img src="/shared/Lincko-logo.png" alt="Lincko">
+    </footer>
+</body>
+</html>

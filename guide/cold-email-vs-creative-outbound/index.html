@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Lincko :: Cold Email vs Creative Outbound</title>
+    <link rel="icon" type="image/png" href="/shared/favicon.png">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #030806;
+            background-image:
+                radial-gradient(ellipse 70% 40% at 50% -5%, rgba(18, 60, 32, 0.5) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 30% at 50% 105%, rgba(12, 45, 22, 0.3) 0%, transparent 55%);
+            color: #e8f0ea;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        .header {
+            display: flex; align-items: center; justify-content: center;
+            padding: 28px 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .header img { height: 48px; width: auto; display: block; }
+
+        .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+        .hero { text-align: center; padding: 64px 8px 40px; }
+        .badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(42, 120, 70, 0.18); border: 1px solid rgba(60, 160, 90, 0.3);
+            border-radius: 100px; padding: 6px 18px; font-size: 12px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase; color: #5dd98a; margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-size: clamp(30px, 5.5vw, 48px); font-weight: 800; line-height: 1.13;
+            letter-spacing: -0.025em; color: #fff; margin-bottom: 20px;
+        }
+        .hero p { font-size: clamp(16px, 2.2vw, 19px); line-height: 1.65; color: rgba(220, 240, 228, 0.65); }
+        .hero-thumb {
+            margin: 36px auto 0; max-width: 560px; border-radius: 16px; overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+        }
+        .hero-thumb img { display: block; width: 100%; height: auto; }
+        .jump {
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 28px;
+            color: #4cd97b; font-size: 14px; font-weight: 600; text-decoration: none;
+            border: 1px solid rgba(76, 217, 123, 0.35); border-radius: 100px; padding: 9px 18px;
+        }
+        .jump:hover { background: rgba(76, 217, 123, 0.1); }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px; padding: 36px 32px; margin-bottom: 20px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        .card h2 { font-size: clamp(22px, 3.4vw, 28px); font-weight: 800; color: #fff; letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 18px; }
+        .card h3 { font-size: 18px; font-weight: 700; color: #fff; margin: 24px 0 10px; }
+        .card p, .card li { font-size: 16.5px; line-height: 1.7; color: rgba(225, 240, 230, 0.82); }
+        .card p + p, .card p + ul, .card p + ol, .card ul + p, .card ol + p, .card table + p, .card p + table { margin-top: 14px; }
+        .card ul, .card ol { padding-left: 22px; }
+        .card li + li { margin-top: 8px; }
+        .card li::marker { color: #4cd97b; }
+        .card strong { color: #fff; font-weight: 700; }
+        .card em { color: #c9f0d6; }
+        .table-wrap { overflow-x: auto; margin-top: 4px; }
+        table { width: 100%; border-collapse: collapse; font-size: 15px; }
+        th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); vertical-align: top; line-height: 1.5; color: rgba(225, 240, 230, 0.82); }
+        th { color: #4cd97b; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+        td:first-child { color: #fff; font-weight: 600; }
+
+        .card.transcript { background: rgba(255, 255, 255, 0.02); }
+        .card.transcript p { font-size: 15.5px; color: rgba(225, 240, 230, 0.72); }
+        .card.transcript p:first-of-type { color: rgba(225, 240, 230, 0.5); font-style: italic; }
+
+        .more {
+            text-align: center; padding: 40px 24px; margin: 12px 0 20px;
+            border: 1px solid rgba(76, 217, 123, 0.25); border-radius: 20px;
+            background: rgba(42, 120, 70, 0.1);
+        }
+        .more h2 { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+        .more p { color: rgba(220, 240, 228, 0.65); line-height: 1.6; margin-bottom: 22px; }
+        .more a {
+            display: inline-flex; align-items: center; gap: 8px; background: #4cd97b; color: #04130a;
+            font-weight: 700; text-decoration: none; padding: 13px 24px; border-radius: 12px;
+        }
+        .more a svg { width: 18px; height: 18px; }
+
+        .footer { padding: 40px 24px 56px; text-align: center; }
+        .footer img { height: 28px; opacity: 0.5; }
+
+        @media (max-width: 560px) {
+            .hero { padding: 44px 0 28px; }
+            .card { padding: 26px 20px; border-radius: 16px; }
+            th, td { padding: 10px 8px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="/shared/Lincko-logo.png" alt="Lincko">
+    </header>
+
+    <main class="wrap">
+        <section class="hero">
+            <div class="badge">Free resource from Dan James</div>
+            <h1>Cold Email vs Creative Outbound</h1>
+            <p>Which one should you use to sign massive whale clients?</p>
+            
+            <div><a class="jump" href="#transcript">Jump to the full transcript</a></div>
+        </section>
+
+        <section class="card">
+<h2>Who this is for</h2>
+<p>B2B business owners who want to sign clients that pay the most, are the easiest to work with and give the best social proof.</p>
+<p><strong>Who am I?</strong> I'm Dan James. I scaled a previous agency from zero to 30K a month in 40 days by booking meetings with whale clients. Today my whole offer is signing whale clients for B2B businesses.</p>
+        </section>
+        <section class="card">
+<h2>The two ways to do outbound</h2>
+<p><strong>Cold email = going fishing.</strong> Build a list of up to 500,000 potential buyers and blast it, personalising at scale. It is a volume game: email 500,000 people, get 500 replies, 50 calls, 5 clients.</p>
+<p><strong>Creative outbound = whale hunting.</strong> Also called account-based marketing (ABM). You go slow, one prospect at a time, and give each one its own campaign: deep research, a physical gift, an outreach movie, a huge strategy doc, turning up at an event.</p>
+<p>There is a time and a place for both.</p>
+        </section>
+        <section class="card">
+<h2>The numbers side by side</h2>
+<div class="table-wrap"><table><thead><tr><th></th><th>Cold email</th><th>Creative outbound</th></tr></thead><tbody><tr><td>Typical response rate</td><td>Around 1% to 1.4% (Instantly's 2026 benchmark says 3.43%)</td><td>We have hit a 78% response rate and around a 50% close rate</td></tr><tr><td>Cost</td><td>Around $255 a month for inboxes, infrastructure and tools</td><td>At least a couple of thousand dollars per account</td></tr><tr><td>Best for</td><td>Daily lead flow, keeping the calendar full</td><td>Landing the logos that change your business</td></tr></tbody></table></div>
+        </section>
+        <section class="card">
+<h2>Why the whale is worth the extra cost</h2>
+<p>Say it normally costs you <strong>$1,500</strong> to win a client worth <strong>$20,000</strong>.</p>
+<p>Going after a whale like Netflix might cost <strong>5x more: $7,500</strong>. But the lifetime value can <strong>10x to $200,000</strong>.</p>
+<p>To make $200,000 from small fish you need 10 clients at $1,500 each = <strong>$15,000</strong> to win them. One whale at $7,500 is half that. When you stack up the economics, the whale wins.</p>
+<p>People don't make these plays because they have to put up the extra money first. Look at the long run, not the short term.</p>
+        </section>
+        <section class="card">
+<h2>Where each one fails</h2>
+<p><strong>Cold email fails at signing whales.</strong> Big companies are whales for a reason: everyone wants to work with them. The person who goes above and beyond is the one who wins them.</p>
+<p><strong>Creative outbound fails at daily lead flow.</strong> As Hormozi says, don't use a harpoon to catch fish. Spending $7,500 to land a $20,000 deal you could win for $1,500 makes no sense.</p>
+        </section>
+        <section class="card">
+<h2>Which one is right for you?</h2>
+<ul><li><strong>No daily lead flow yet?</strong> Do cold email. It keeps the lights on.</li><li><strong>Dialled-in sales process, real case studies, and you know you can deliver?</strong> Add creative outbound on top and go get whales.</li><li>Run both together. Don't switch the cold email off.</li><li>The best time to sign a massive whale client was yesterday.</li></ul>
+        </section>
+        <section class="card transcript" id="transcript">
+<h2>Full transcript</h2>
+<p>Everything I said in the video, word for word (lightly tidied so it reads well).</p>
+<p>Cold email versus creative outbound. What's the best way to do outbound to sign massive whale clients? Because ultimately, what we want to do is we want to be able to sign clients that pay us the most amount of money, are the easiest to work with, and give us the best social proof. So, that's why we are figuring out today what is best for you to sign these large clients. Now, before we get into all that, who am I? 'Cause you might not know who I am. My name is Dan James, and I scaled, a previous agency from zero to 30K a month in just 40 days. Not the biggest numbers ever, but pretty damn quick.</p>
+<p>And I have a new offer all around signing whale clients for B2B businesses. And if you're going to promise whale clients, you need to have a very good outreach to do that, if I don't say so myself. And I've got a ton of social proof below, as well as a bunch of other resources for you.</p>
+<p>So firstly, let's look at the core ways that people do outbound, in the current space. So yes, they're cold DMs. Yes, they're cold calling. But really, it's cold email, okay? Now, what is cold email? Cold email is creating a list of up to 500,000 potential buyers and frankly, blasting the list, hitting as many of them as you, possibly can, trying to personalize the emails at scale and get some responses. That's very simply what we're doing.</p>
+<p>This works. Now, is it the best tactic to sign massive whale clients? Not really, but it becomes a volume game. If you email 500,000 people, so many of them will respond. 500 of them. That would be a crazy amount. But then of the 500 responses, 50 book a call, and then of the 50 that book a call, you close five of them. For example, that's how the funnel can work.</p>
+<p>But the issue of that is that it's not geared toward signing massive whale clients.</p>
+<p>Now, in contrast, there's creative outbound. Now, creative outbound can also be called ABM, but ABM is, is far worse. ABM stands for account-based marketing. But it's essentially, you go very slow, one by one and close or attempt to close each whale client, and you give it its own marketing campaign. So that means tons of research are going into it, tons of hours, tons of manpower, et cetera. And it's a very difficult function to run. But because it's so difficult to do, this works brilliantly for signing massive whale clients.</p>
+<p>So you can see that there's one tactic which is all around volume and being able to sign as many people as humanly possible, and there's a different tactic, which is the other side of the spectrum, and that's all around being able to go slow and sign each client, one by one. So, there's a time and a place for both.</p>
+<p>So, the next thing is: how have businesses used cold email? Now, as I said before, businesses have used cold email in order to sign a volume of clients. The entire point is you want to put as many leads into the pipeline, and you wanna get as much output as humanly possible. So this is, cold email is a volume game, and that's why when people talk about cold email for signing whales, it's comedy to me, because that's not the function of why we use cold email. We use the cold email because we want to get as many small fish as possible. We're not whale hunting. We're getting small fish.</p>
+<p>It's daily lead flow, if you will.</p>
+<p>In contrast, how have businesses used creative outbound? So, there's been a number of businesses that have been able to do it successfully. So, for example, there's one lady called, Selin Kocalar. I hope I didn't butcher her name. And she sent rugs to lots of different startups that she wanted to work with, and this campaign worked very well. Other people have sent physical goods in the post. These are one-by-one tactics that get businesses to respond because you go, &quot;Wow, this is, this is for us specifically.&quot;</p>
+<p>So, whilst one is for the daily lead flow, keep the calendar ticking, the other is a whale play. So again, there's a stark contrast between the two.</p>
+<p>So then now, what's the average conversion rate of cold email? Now, you're going to hear different things, okay? So instead of me making up some data, we can look at Instantly's benchmark report of 2026. If I'm not mistaken, it was 3.43% was an average response rate. Now, I actually think that's false. I think it's lower than that, if I'm being honest, and this is no offense to Instantly 'cause we actually use their products and I'm a fan of their products, if you will. But they're incentivized to give, favorable data 'cause obviously that's their software.</p>
+<p>But I think the response rate's more in the 1%, more in like the 1.4%. And because it's a volume play, you're just blasting lists and you're looking to get as many responses as possible.</p>
+<p>In contrast, what's the, conversion rate of creative outbound? Now, of course you're going much slower, so the numbers are much smaller, but we've been able to run creative outbound campaigns and get a 78% response rate. Not close rate. Our close rate's been around like the 50%, which is of course excellent because they're so warm. But with creative outbound, your, conversion rate is much higher. The only difference is that with cold email, the cost to acquire a customer and how much money you have to put in to make it work and to make it happen is much smaller. You can be all in per month, inboxes, infrastructure, technology, et cetera, of cold email, 255 bucks easily.</p>
+<p>Creative outbound, to run an effective campaign, even if we're being very creative, it's gonna cost you at least a couple of, grand for one account. So yes, there is the risk of, &quot;Oh, we're gonna land this account,&quot; but you have to, absorb the increase in cost to acquire a customer. You have to absorb that in order to get that massive LTV. The difference is that if I'm running a creative outbound campaign and I'm trying to land Nike or Amazon, okay? Yes, the cost to acquire a customer is going to increase because I'm trying to land Amazon, I'm trying to land Netflix, okay? The cost to acquire a customer might go from, let's say it's typically, $1,500. It might go up from $1,500 by a 5X to 7.5K, okay?</p>
+<p>That is a significant increase in cost to acquire a customer. But guess what? The LTV, lifetime value, or lifetime gross profit, will increase tremendously. That will 10X. That will not 5X, that will 10X. I will make so much more money.</p>
+<p>So let's say the average LTV for a customer is, $20,000, okay? You can sign Netflix and the LTV increases to 200K. So yes, you have to spend 5X more from 1.5K to 7.5K to acquire a customer, but your LTV is so much higher, it's so worth it. It's such a worthwhile deal. But the reason why people don't make these plays is because you have to put up the initial money, you have to put up that 5X increase in order to acquire a customer in the first place. So people are like, &quot;Oh man, ugh, I really don't wanna have to spend an extra six and a half grand. But once you do, you're gonna make so much more money in the long run. So we have to look at the long run and not just what's happening in the short term. The next thing is where does cold email shine and where does creative outbound shine? Now, I do shit on cold email quite a lot, number one, 'cause it's funny. But number two, because it's the antithesis of what I do. But cold email does have a time and it does have a place.</p>
+<p>So as I said, for daily lead flow, for getting people in the door, cold email is excellent. If you were to go fishing, cold email is like getting lots of small fish. The plural of fish is fish, by the way. You can go one small fish there, one small fish there, one small fish there, boom, and before you know it, you've actually got a plate full of fish. That's excellent. Creative outbound, on the other hand, is like going hunting for a bloody megalodon. You're going for a blue whale.</p>
+<p>You're going for a sperm whale, okay? What's great about a blue whale is that it's so large that you can eat off it for a bloody year. The LTV is much higher, so we're gonna rock with the comparison we had before. The fish were 20K, okay? It'll take you 10 fish, all right, to make up for a whale. Or you could just go get a whale. Much easier.</p>
+<p>On top of that, the cost to acquire a customer is also lower because in the scenario that we had, it was $1,500 to acquire a customer, for a fish, okay? So 1,500 times 10 is 15 grand. But then in the scenario of the whale, the LTV was 200K, but the LTV increased by 5X from 1,500 to 7.5K. That's a 5X increase. Still far cheaper than acquiring 10 fish. So do you see how when you, when you stack up the economics, it always makes sense to go and get that whale? Now, obviously you need the daily lead flow.</p>
+<p>You can't always just go get whales, but having both is extremely beneficial for the business. So the next thing is where does cold email fail and where does creative outbound fail? Now, in my opinion, cold email fails in trying to sign larger clients. Now, somebody might watch this, somebody might even comment, &quot;Well, I sent a cold email to Amazon and Amazon responded and they became a client. Number one, well done, but that's very rare. It is rare that large corporations respond to cold emails because the thing is, they are a whale for a reason. Everybody wants to work with them. They are the biggest social proof in the game. They spend the most money. They're the hot girl at the dance, whatever you wanna call it. They're numero uno, okay? And if they're number one, then you, your competitor, and every single person in the space wants to work with that particular business.</p>
+<p>So the person that goes above and beyond to get that business is more likely to win the business 'cause ultimately, we are competing and we are winning business. So yes, cold email can sign whales, but there's so many better tactics to do it. Cold email is best when it's used to get fish, when you're going fishing. That daily lead flow, that's where cold email shines. And it fails to sign whales. So where does creative outbound fail? Now, creative outbound is garbage for daily lead flow.</p>
+<p>If you run a creative outbound campaign, as in, like, you send them a crazy outreach video, you send them a physical good, or you send them a massive strategy doc, you go above and beyond, maybe you go to an event to go see them. That is absolutely stupid for signing small companies. Like, I've seen Hormozi say, you don't wanna be using a harpoon to get fish. You want to be using your harpoon to get whales, okay? And if you are not hunting whales whilst doing creative outbound, it will obviously work, but it will be a complete waste of your time because you're putting all this time and energy and it doesn't actually make sense from an economics perspective. Just maths. If you're spending 7.5K when you could spend 1.5K to get a 20K deal, why would you do that?</p>
+<p>It doesn't make any sense. If you're gonna spend all that time and energy and money, go get somebody worth it. Go get someone that you're like, &quot;Yes! I'm so happy that we signed them.&quot; That's what we're looking to do here.</p>
+<p>And last but certainly not least is how does cold email and how does creative outbound make sense for you specifically? Now, of course, I don't know the inner workings of your business, but I can say this definitively. If you have no daily lead flow, then you need to be doing cold email. Cold email is excellent for keeping the lights on, for keeping people paid, and keep things ticking. All right? That's where cold email makes sense. However, if you have a dialed-in sales process, you have real tangible case studies, you understand the customer journey and just how things are working in your business, then it makes sense to start doing creative outbound because you already have the daily lead flow.</p>
+<p>You can scale daily lead flow further and further and further, excellent, and that's important. But you can also accompany that with getting massive whale clients too, and ultimately both become important. It's very easy for me to sit here and say, &quot;No, like, turn off the cold email,&quot; but that's not a good idea. Both work in tandem. Both are excellent because you can continue to acquire customers quite cheaply at 1.5K, but you can run a creative outbound campaign for a 5X increase and get a Nike and get an Amazon. So it does depend on where the business is at. But if you can run a creative outbound campaign, if you can run a campaign to go and get a whale, you should absolutely do it.</p>
+<p>People wait so long and say, &quot;Oh, the time isn't right or this.&quot; That doesn't make any sense. It makes no sense. The best time to sign a massive whale client is yesterday. Yesterday is the best time to get someone that's going to change your business or change the trajectory of the social proof. So if you have a great offer, if you have a dialed-in sales process, if you know you can fulfill for clients, go and get whales.</p>
+        </section>
+
+        <section class="more">
+            <h2>Want more like this?</h2>
+            <p>Every resource from my YouTube videos, in one place.</p>
+            <a href="/resources">See every resource <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <img src="/shared/Lincko-logo.png" alt="Lincko">
+    </footer>
+</body>
+</html>
