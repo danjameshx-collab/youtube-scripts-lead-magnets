@@ -41,7 +41,13 @@ function fill(html, replacements) {
 const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 const PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>';
 
+// A "thumbnail" in the content JSON (e.g. "/thumbs/<slug>.jpg") wins over the YouTube one.
+const hasThumb = (page) => Boolean(page.thumbnail || page.youtubeId);
+
 function thumbImg(page, cls) {
+    if (page.thumbnail) {
+        return '<img' + (cls ? ' class="' + cls + '"' : '') + ' src="' + esc(page.thumbnail) + '" alt="' + esc(cardTitle(page)) + '" loading="lazy">';
+    }
     if (!page.youtubeId) return '';
     const src = 'https://i.ytimg.com/vi/' + page.youtubeId + '/maxresdefault.jpg';
     return '<img' + (cls ? ' class="' + cls + '"' : '') + ' src="' + src + '" alt="' + esc(cardTitle(page)) + '" loading="lazy"' +
@@ -61,7 +67,7 @@ const SORT_BAR = [
 ].join('\n');
 
 function cardHtml(page, num) {
-    const thumb = page.youtubeId
+    const thumb = hasThumb(page)
         ? thumbImg(page)
         : '<div class="thumb-fallback"><img src="/shared/Lincko-logo.png" alt=""><span>' + esc(cardTitle(page)) + '</span></div>';
     return [
@@ -122,7 +128,7 @@ for (const page of pages) {
             `    </section>`;
     }
 
-    const videoThumbHtml = page.youtubeId
+    const videoThumbHtml = hasThumb(page)
         ? '        <div class="video-thumb">\n' +
           '            <div class="video-thumb-frame">' + thumbImg(page).replace(' loading="lazy"', '') + '</div>\n' +
           '            <div class="video-thumb-tag">' + PLAY + ' The resource from this video</div>\n' +
@@ -160,7 +166,7 @@ for (const page of pages) {
 
     const html = fill(lpTemplate, {
         '{{PAGE_TITLE}}': page.pageTitle,
-        '{{HERO_CLASS}}': page.youtubeId ? ' has-thumb' : '',
+        '{{HERO_CLASS}}': hasThumb(page) ? ' has-thumb' : '',
         '{{VIDEO_THUMB_HTML}}': videoThumbHtml,
         '{{BADGE_TEXT}}': page.badgeText,
         '{{HEADLINE_HTML}}': page.headlineHtml,
