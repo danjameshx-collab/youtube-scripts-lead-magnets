@@ -11,5 +11,6 @@
   "leadMagnetName": "What 365 Days of Studying Outreach Taught Me",
   "leadMagnetUrl": "https://lincko-youtube-scripts.vercel.app/guide/365-days-studying-outreach",
   "socialProof": [],
-  "socialProofLabel": "What people are saying"
+  "socialProofLabel": "What people are saying",
+  "hidden": true
 }

@@ -11,5 +11,6 @@
   "leadMagnetName": "The Only 4 Outbound Metrics That Matter",
   "leadMagnetUrl": "https://lincko-youtube-scripts.vercel.app/guide/outbound-metrics-that-matter",
   "socialProof": [],
-  "socialProofLabel": "What people are saying"
+  "socialProofLabel": "What people are saying",
+  "hidden": true
 }

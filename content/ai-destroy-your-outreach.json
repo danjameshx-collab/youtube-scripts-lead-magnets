@@ -11,5 +11,6 @@
   "leadMagnetName": "AI Is Going To Destroy Your Outreach",
   "leadMagnetUrl": "https://lincko-youtube-scripts.vercel.app/guide/ai-destroy-your-outreach",
   "socialProof": [],
-  "socialProofLabel": "What people are saying"
+  "socialProofLabel": "What people are saying",
+  "hidden": true
 }

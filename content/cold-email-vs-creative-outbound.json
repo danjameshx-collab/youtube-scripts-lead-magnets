@@ -11,5 +11,6 @@
   "leadMagnetName": "Cold Email vs Creative Outbound",
   "leadMagnetUrl": "https://lincko-youtube-scripts.vercel.app/guide/cold-email-vs-creative-outbound",
   "socialProof": [],
-  "socialProofLabel": "What people are saying"
+  "socialProofLabel": "What people are saying",
+  "hidden": true
 }

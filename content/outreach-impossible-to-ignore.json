@@ -11,5 +11,6 @@
   "leadMagnetName": "Outreach That's Impossible To Ignore",
   "leadMagnetUrl": "https://lincko-youtube-scripts.vercel.app/guide/outreach-impossible-to-ignore",
   "socialProof": [],
-  "socialProofLabel": "What people are saying"
+  "socialProofLabel": "What people are saying",
+  "hidden": true
 }

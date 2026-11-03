@@ -201,7 +201,8 @@ console.log('Built: /resources (' + listed.length + ' scripts)');
 function inlineMd(s) {
     return esc(s)
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.+?)\*/g, '<em>$1</em>');
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a class="btn" href="$2" target="_blank" rel="noopener">$1</a>');
 }
 
 function mdBlocks(md) {
